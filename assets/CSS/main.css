@@ -1,0 +1,33 @@
+@import url('./base.css');
+
+.category{
+    width:25%;
+    padding: 40px ;
+    box-shadow: 0px 4px 8px rgba(0,0,0,.1);
+    text-align: center;
+    box-shadow: 10px;
+    transition: 1.5s;
+
+}
+
+.category:hover{
+    box-shadow: 0px 4px 8px rgba(0,0,0,1);
+}
+
+.categories{
+    padding:50px;
+}
+
+
+.products{
+    padding:20px 20px;
+}
+.product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:0px 0px 20px 0px;
+    background-color: grey;
+    border-radius: 10px;
+}
