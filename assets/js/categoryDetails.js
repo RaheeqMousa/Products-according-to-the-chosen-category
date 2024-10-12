@@ -1,4 +1,6 @@
-const getProducts = async () => {
+/*................................ GET AND DISPLAY PRODUCTS ACCORDING TO THE CLICKED ON CATEGORY ..................................*/
+
+const getProducts = async () => {   /* THIS FUNCTION RETURNS THE CATEGORY WE CLICKED ON */
     const params = new URLSearchParams(window.location.search);
     const categorySearchedFor = params.get('category');
     const {data} = await axios.get(`https://dummyjson.com/products/category/${categorySearchedFor}`);
@@ -7,7 +9,7 @@ const getProducts = async () => {
 }
 
 
-const displayProducts = async () => {
+const displayProducts = async () => {   /* THIS FUNCTION DISPLAYS THE PRODUCTS OF THE CATEGORY WE CLICKED ON */
     const data = await getProducts();
 
     /* now we are iterating the products of the category using the map cecause of that i wrote "data.products" */
@@ -19,7 +21,7 @@ const displayProducts = async () => {
                 <span>${prod.price}</span>
             </div>
         `;
-    }).join('');
+    }).join(''); /* THE DATA WE GOT IS DISPLAYED AND THERE IS ',' BETWEEN THEM SO WE JOIN THE DATA WITH '' (EMPTY QUOTES) */
 
     document.querySelector('.products .row').innerHTML = products;
 }
