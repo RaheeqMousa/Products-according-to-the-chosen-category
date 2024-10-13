@@ -76,21 +76,24 @@ header a:hover{
     color:#141718
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     header .container{
         width:100%;
     }
     header .icons{
-        gap:5px;
+        gap:15px;
+    }
+
+    .header{
+        padding:10px;
     }
 
     .NavigationElements{
         display: none;
     }
 
-    .header .row{
-        justify-content: center;
-        align-items: center;
+    header .row{
+        padding:10px 25px;
     }
 }
 
