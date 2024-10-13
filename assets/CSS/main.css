@@ -1,5 +1,19 @@
 @import url('./base.css');
 
+
+.NotificationBar{
+    background-color: rgb(0, 0, 36);
+    color:white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position:sticky;
+
+}
+
+/*..............................................................*/
+
 header{
     position: sticky;
     top:0;
@@ -12,15 +26,26 @@ header{
     background-color:rgb(251, 252, 251);
 }
 
-header .row{
+/* header .row{
     justify-content: center;
-    gap:80px;
+    gap:100px;
+} */
+
+.ChangeMode button{
+    font-size: 40px;
+    background-color: rgb(251, 252, 251);
+    border: 0px solid;
+    
+    
+    transition:font-size,.75s;
 }
 
 header a{
     color:grey;
     transition:font-size,.75s;
 }
+
+
 
 header a:hover{
     color: black;
@@ -46,12 +71,26 @@ header a:hover{
     font-size: 20px;
 }
 
+.headerOtherMode{
+    background-color: white;
+    color:#141718
+}
+
 @media (max-width: 400px) {
     header .container{
         width:100%;
     }
     header .icons{
         gap:5px;
+    }
+
+    .NavigationElements{
+        display: none;
+    }
+
+    .header .row{
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -74,6 +113,7 @@ header a:hover{
     text-align: center;
     box-shadow: 10px;
     transition: 1.5s;
+    margin-bottom: 10px;
 
 }
 
@@ -199,9 +239,46 @@ footer i{
     gap:20px;
 }
 
+
 @media (max-width: 410px){
     footer .container{
         width: 100%;
     }
+
+}
+
+/*.....................................................................*/
+
+.dark-mode .categories{
+    background-color: #141718;
+}
+    
+    
+
+.dark-mode .category{
+        background-color: white;
+}
+
+.dark-mode .products{
+    background-color: #141718;
+}
+
+.dark-mode header{
+    background-color: #141718;
+}
+
+.dark-mode .category:hover{
+    box-shadow: 0px 4px 8px rgb(255, 255, 255);
+}
+
+.dark-mode header a:hover{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.dark-mode .ChangeMode button{
+    background-color:#141718;
+    border: 0px solid;
+    color:white
 
 }

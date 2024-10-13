@@ -1,3 +1,20 @@
+/*.....................................................Change from light/dark mode......................................................*/
+
+ function changeLight(){
+    document.querySelector('body').classList.toggle("dark-mode");
+
+    let icon=document.querySelector('.ChangeMode .SwitchMode i');
+    if (document.body.classList.contains("dark-mode")) {
+        // Change the icon to sun (click to get dark mode)
+        icon.className = "fa-solid fa-sun";
+    } else {
+        // Change the icon to moon (click to get light mode)
+        icon.className = "fa-solid fa-moon";
+    }
+}
+
+document.querySelector(".SwitchMode").onclick=changeLight;
+
 /*................................ GET AND DISPLAY PRODUCTS ACCORDING TO THE CLICKED ON CATEGORY ..................................*/
 
 const getProducts = async () => {   /* THIS FUNCTION RETURNS THE CATEGORY WE CLICKED ON */

@@ -1,3 +1,28 @@
+/*.....................................................Change from light/dark mode......................................................*/
+
+ function changeLight(){
+    document.querySelector('body').classList.toggle("dark-mode");
+
+    let icon=document.querySelector('.ChangeMode .SwitchMode i');
+    if (document.body.classList.contains("dark-mode")) {
+        // Change the icon to sun (click to get dark mode)
+        icon.className = "fa-solid fa-sun";
+    } else {
+        // Change the icon to moon (click to get light mode)
+        icon.className = "fa-solid fa-moon";
+    }
+}
+
+document.querySelector(".SwitchMode").onclick=changeLight;
+
+/*.....................................................Delete the Notification Bar......................................................*/
+
+function DeleteNotification(){
+    document.querySelector(".NotificationBar").remove();
+}
+
+document.querySelector(".DeleteNotificationButton").onclick=DeleteNotification;
+
 /*..................................................... GET AND DISPLAY CATEGORIES .....................................................*/
 
 const getCategories = async () => {     /* THIS FUNCTION RETURN THE CATEGORIES WE GOT FROM THE API */
