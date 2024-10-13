@@ -35,8 +35,7 @@ header{
     font-size: 40px;
     background-color: rgb(251, 252, 251);
     border: 0px solid;
-    
-    
+    color:#141718;
     transition:font-size,.75s;
 }
 
