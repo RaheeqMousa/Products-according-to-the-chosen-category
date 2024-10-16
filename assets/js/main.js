@@ -32,21 +32,39 @@ const getCategories = async () => {     /* THIS FUNCTION RETURN THE CATEGORIES W
 }
 
 const displayCategoryList= async()=>{   /* THIS DISPLAYS THE CATEGORIES TO THE HTML FILE */
-    const categories=await getCategories();
 
-    const result=categories.map(function(category){
+    document.querySelector('.loader').classList.remove("stop-loader");
+    document.querySelector('.loader-container').classList.remove("stop-loader");
+    const foot = document.querySelector('footer');
+    foot.style.marginTop='250px';
+
+
+    try{
+        const categories=await getCategories();
+
+        const result=categories.map(function(category){
         
-        console.log(category);
-        return `
-        <div class="category">
-            <h2>${category}</h2>
-            <a href="categoryDetails.html?category=${category}">Details</a>
-        </div> 
-        `;
-
-    }).join('');  /* THE DATA WE GOT IS DISPLAYED AND THERE IS ',' BETWEEN THEM SO WE JOIN THE DATA WITH '' (EMPTY QUOTES) */
-
-    document.querySelector('.categories .row').innerHTML = result;
+            console.log(category);
+            return `
+            <div class="category">
+                <h2>${category}</h2>
+                <a href="categoryDetails.html?category=${category}">Details</a>
+            </div> 
+            `;
+    
+        }).join('');  /* THE DATA WE GOT IS DISPLAYED AND THERE IS ',' BETWEEN THEM SO WE JOIN THE DATA WITH '' (EMPTY QUOTES) */
+    
+        document.querySelector('.categories .row').innerHTML = result;
+        
+    }catch(e){
+        console.log(e);
+    }finally{
+        document.querySelector('.loader').classList.add("stop-loader");
+        document.querySelector('.loader-container').classList.add("stop-loader");
+        const foot = document.querySelector('footer');
+        foot.style.marginTop='0px';
+    }
+    
 }
 
 displayCategoryList();
@@ -64,7 +82,12 @@ const getProducts = async() =>{     /* THIS FUNCTION RETURN ALL THE PRODUCTS WE 
 }
 
 const displayProductList= async()=>{    /* THIS FUNCTION DISPLAYS ALL THE PRODUCTS WE GOT FROM THE API TO THE HTML FILE */
+    document.querySelector('.loader').classList.remove("stop-loader");
+    document.querySelector('.loader-container').classList.remove("stop-loader");
+    const foot = document.querySelector('footer');
+    foot.style.marginTop='250px';
 
+    try{
     const products=await getProducts();
     const result= products.products.map(function(p){
 
@@ -78,7 +101,15 @@ const displayProductList= async()=>{    /* THIS FUNCTION DISPLAYS ALL THE PRODUC
     }
     ).join('');
 
-    document.querySelector('.products .row').innerHTML=result;
-}
+        document.querySelector('.products .row').innerHTML=result;
+    }catch(e){
+        document.querySelector('.products .row').innerHTML=`<p>error with products</p>`
+    }finally{
+        document.querySelector('.loader').classList.add("stop-loader");
+        document.querySelector('.loader-container').classList.add("stop-loader");
+        const foot = document.querySelector('footer');
+        foot.style.marginTop='0px';
+    }
 
+}
 displayProductList();

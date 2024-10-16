@@ -1,5 +1,8 @@
 @import url('./base.css');
 
+body{
+height:700px;
+}
 
 .NotificationBar{
     background-color: rgb(0, 0, 36);
@@ -103,6 +106,40 @@ header a:hover{
 
 }
 /*............................................................*/
+.loader-container{
+    display:flex;
+    justify-content:center; 
+    align-items:center; 
+    height:100%; /*height is equal to the viewport height*/
+    width:100%; /*all the width of the screen (mobile or laptops...)*/
+    position:fixed; /*put a layer above all other layers*/
+    background-color: rgba(0,0,0,0.3);
+}
+
+.loader{
+    width:50px;
+    height:50px;
+    border-radius:50%; /*I want to make the border for the loader with circle shaoe*/
+    border:solid 10px rgb(0, 0, 0);
+    border-bottom-color:transparent;
+    animation: rotate 1s infinite ;
+}
+
+.stop-loader{    /*This will make the loader disappear in from the page*/
+            /*When i want the loader to disappear i will add this class to the div*/
+    display:none;
+}
+
+
+@keyframes rotate{
+    0%{
+        transform:rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);;
+    }
+}
 
 
 
@@ -193,6 +230,7 @@ header a:hover{
 footer {
     background-color: #141718;
     padding:50px 0px;
+    
 }
 
 footer .row:nth-child(2){

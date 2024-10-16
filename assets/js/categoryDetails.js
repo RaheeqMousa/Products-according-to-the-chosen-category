@@ -27,6 +27,13 @@ const getProducts = async () => {   /* THIS FUNCTION RETURNS THE CATEGORY WE CLI
 
 
 const displayProducts = async () => {   /* THIS FUNCTION DISPLAYS THE PRODUCTS OF THE CATEGORY WE CLICKED ON */
+ 
+    document.querySelector('.loader').classList.remove("stop-loader");
+    document.querySelector('.loader-container').classList.remove("stop-loader");
+    const foot = document.querySelector('footer');
+    foot.style.marginTop='290px';
+
+  try{  
     const data = await getProducts();
 
     /* now we are iterating the products of the category using the map cecause of that i wrote "data.products" */
@@ -40,7 +47,16 @@ const displayProducts = async () => {   /* THIS FUNCTION DISPLAYS THE PRODUCTS O
         `;
     }).join(''); /* THE DATA WE GOT IS DISPLAYED AND THERE IS ',' BETWEEN THEM SO WE JOIN THE DATA WITH '' (EMPTY QUOTES) */
 
-    document.querySelector('.products .row').innerHTML = products;
+        document.querySelector('.products .row').innerHTML = products;
+    }catch(e){
+        document.querySelector('.products .row').innerHTML =`<p>error with reading products for a such category</p>`;
+    }finally{
+        document.querySelector('.loader').classList.add("stop-loader");
+        document.querySelector('.loader-container').classList.add("stop-loader");
+        const foot = document.querySelector('footer');
+        foot.style.marginTop='0px';
+    }
+    
 }
 
 displayProducts();
