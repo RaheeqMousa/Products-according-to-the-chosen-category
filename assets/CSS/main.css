@@ -120,7 +120,7 @@ header a:hover{
     width:50px;
     height:50px;
     border-radius:50%; /*I want to make the border for the loader with circle shaoe*/
-    border:solid 10px rgb(0, 0, 0);
+    border:solid 10px gray;
     border-bottom-color:transparent;
     animation: rotate 1s infinite ;
 }
@@ -140,9 +140,6 @@ header a:hover{
         transform: rotate(360deg);;
     }
 }
-
-
-
 /*............................................................*/
 
 .category{
@@ -198,7 +195,7 @@ header a:hover{
     align-items: center;
     flex-direction: column;
     margin:0px 0px 20px 0px;
-    background-color: grey;
+    background-color: rgb(150, 150, 150);
     border-radius: 10px;
 }
 
@@ -224,6 +221,38 @@ header a:hover{
         margin:15px 10px;
     }
 }
+
+/**********************************************************************************************/
+    .products-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .pagination-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:3px;
+    }
+
+    .page-link{
+        color:rgb(255, 255, 255);
+        border-radius: 5px;
+        font-size: 20px;
+        padding:6px;
+        background-color: grey;
+        border: solid 2px;
+    }
+
+    .page-link:hover{
+        background-color: darksalmon;
+    }
+
+    .active-page{
+        background-color: darksalmon;
+    }
 
 /*...........................................................................................*/
 
@@ -296,7 +325,7 @@ footer i{
     
 
 .dark-mode .category{
-        background-color: white;
+    background-color: white;
 }
 
 .dark-mode .products{

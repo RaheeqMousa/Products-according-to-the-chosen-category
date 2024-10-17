@@ -24,5 +24,5 @@ ul li{
   display:flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /*if the sum of the elements inside the div that takes the flex attribute is bigger than container div width then then the elements will go down into new row*/
 }
