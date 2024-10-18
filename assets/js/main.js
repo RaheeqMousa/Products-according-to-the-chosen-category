@@ -124,7 +124,10 @@ const displayProductList= async(page = 1)=>{    /* THIS FUNCTION DISPLAYS ALL TH
                 paginationLink=`<button class="page-link" onClick=displayProductList('${page-1}') >&laquo</button>`;
             }
 
-            for(let i=1;i<=numberOfPages;i++){
+            startPage=Math.ceil(((page-1)/3)*3)+1;
+            endPage= Math.min(startPage+2, numberOfPages);  /* in order not to exceed the number of pages */
+
+            for(let i=startPage;i<=endPage;i++){
                 //if the page 1 is selected then the background of the button whice have the number on it must change its background
                 // when the button is clicked I will show the data for the specific page number that clicked on 
                 paginationLink+=`<button  class="page-link ${i==page?'active-page':''}" onClick=displayProductList('${i}')>${i}</button>`; 
@@ -134,7 +137,11 @@ const displayProductList= async(page = 1)=>{    /* THIS FUNCTION DISPLAYS ALL TH
                 // If the user in the last page the next button must be disabled 
                 paginationLink += `<button  class="page-link" onClick=displayProductList('${parseInt(page)+1}') disabled>&raquo</button>`;
             }else{
+
+                paginationLink+=`<button  class="page-link" disabled>...</button>`;
+
                 paginationLink+=`<button class="page-link" onClick=displayProductList('${parseInt(page)+1}') >&raquo</button>`;
+
             }
 
             
