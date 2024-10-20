@@ -415,31 +415,34 @@ footer i{
 
 /*.....................................................................*/
 
+.dark-mode header{
+    background-color: #141718;
+}
+
+.dark-mode header a:hover{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
 .dark-mode .categories{
     background-color: #141718;
 }
     
-    
-
 .dark-mode .category{
     background-color: white;
-}
-
-.dark-mode .products{
-    background-color: #141718;
-}
-
-.dark-mode header{
-    background-color: #141718;
 }
 
 .dark-mode .category:hover{
     box-shadow: 0px 4px 8px rgb(255, 255, 255);
 }
 
-.dark-mode header a:hover{
-    color: rgb(255, 255, 255);
-    font-size: 20px;
+
+.dark-mode .products{
+    background-color: #141718;
+}
+
+.dark-mode .product:hover{
+    box-shadow: 0px 4px 8px rgb(255, 255, 255);
 }
 
 .dark-mode .ChangeMode button{
