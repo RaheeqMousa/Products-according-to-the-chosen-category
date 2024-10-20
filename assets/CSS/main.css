@@ -37,6 +37,7 @@ header{
     border: 0px solid;
     color:#141718;
     transition:font-size,.75s;
+    cursor: pointer;
 }
 
 header a{
@@ -196,6 +197,10 @@ header a:hover{
     border-radius: 10px;
 }
 
+.product:hover{
+    box-shadow: 0px 4px 8px rgba(0,0,0,1);
+}
+
 .product img{
     width:100%;
 }
@@ -218,6 +223,100 @@ header a:hover{
         margin:15px 10px;
     }
 }
+
+/***********************************************************************************************/
+
+    .products-modal{
+        background-color:rgb(0,0,0,0.3);
+        height:100%;
+        width:100%;
+        position: fixed;
+        top:0;
+        left: 0;
+        display: flex; /*the content of this modal will be in the center of the div*/
+        align-items: center;
+        justify-content: center;
+    }
+
+    .products-modal .img{
+        background-color: rgb(255, 255, 255);
+        padding: 20px 40px;
+        border-radius:20px;
+        box-shadow:0 4px 4px rgba(0,0,0,.1);
+        position: relative;
+    }
+    
+    .products-modal img{
+        width:400px;
+        height: 100%;
+    }
+
+    .img .productData{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap:5px;
+        font-weight:bold;
+        text-align: center;
+    }
+
+    .img .productData p{
+        background-color: rgb(0,0,0,0.4) ;
+        border-radius: 2px;
+        padding:3px;
+        font-size: 24px;
+    }
+
+    .close-button, .right-button, .left-button{
+        position:absolute;
+        color:rgb(255, 255, 255);
+        font-size:20px;
+        background-color: rgba(0,0,0,.2);
+        border-radius: 5px;
+        padding:5px;
+        cursor: pointer;
+    }
+
+    .close-button{ 
+    /*the distance between the top and the button is 10, and the distance between the right edge of the div and the button will be 10px*/
+        top:10px;
+        right:10px;
+    }
+
+    .left-button{
+        left:10px;
+        top:50%;
+    }
+
+    .right-button{
+        right:10px;
+        top:50%;
+    }
+
+    .display-none-modal{
+        display: none;
+    }
+
+    @media (max-width: 700px) {
+        .products-modal{
+            width:100%;
+            padding:0px;
+        }
+
+        .products-modal img{
+            width:100%;
+            height:auto;
+        }
+
+        .img .productData p{
+            background-color: rgb(0,0,0,0.4) ;
+            border-radius: 2px;
+            padding:3px;
+            font-size: 18px;
+        }
+
+    }
 
 /**********************************************************************************************/
     .products-container{
