@@ -188,19 +188,36 @@ function productsPagination(page, numberOfPages) {
 /*..................................................... SEARCH BAR .....................................................*/
 
 
-/*................................................ GetProductDataForTheModal .......................................*/
 
-const getProductDataForTheModal = async(page,currentIndex) => {
-    //get the products array from the response data and logging the first product in that array.
-    const response = await axios.get(`https://dummyjson.com/products?skip=${(page-1) * 10 + currentIndex}`);
-    const currentProductData = response.data.products; // Assuming products is an array in the response data
-    const data=`
-            <p class="price">Price: ${currentProductData[0].price}</p>
-            <p class="price">Stock: ${currentProductData[0].stock}</p>
+/*................................................. getProductsPriceAndStock ...........................................*/
+
+const getProductsPriceAndStock = async () => {
+    const response = await axios.get(`https://dummyjson.com/products`);
+    const productInfoArray = [];
+
+    for (let i = 0; i < response.data.products.length; i++) {
+        productInfoArray.push({
+            "price": response.data.products[i].price,
+            "stock": response.data.products[i].stock
+        });
+    }
+
+    return productInfoArray; // Return the array
+}
+
+/*................................................ Get Product Data InnerHTML for The Modal .......................................*/
+const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
+    const productInfoArray = await getProductsPriceAndStock(); // Await the promise
+    const selectedProduct = productInfoArray[(page - 1) * 10 + currentIndex];
+
+    const data = `
+            <p class="price">Price: ${selectedProduct.price}</p>
+            <p class="stock">Stock: ${selectedProduct.stock}</p>
     `;
 
-    return data; // return the HTML data to be displayed in the modal.
+    return data; // Return the HTML data to be displayed in the modal
 }
+
 
 /*..................................................... MODAL .....................................................*/
 
@@ -223,7 +240,7 @@ const getProductDataForTheModal = async(page,currentIndex) => {
 
             modal.querySelector("img").setAttribute("src",e.target.src);
             //display the product data in the modal
-            modal.querySelector(".productData").innerHTML=await getProductDataForTheModal(page,currentIndex); 
+            modal.querySelector(".productData").innerHTML=await getProductDataInnerHTMLForTheModal(page,currentIndex); 
 
         });
     });
@@ -237,7 +254,7 @@ const getProductDataForTheModal = async(page,currentIndex) => {
 
         const src=images[currentIndex].src; //get the next image src
         modal.querySelector("img").setAttribute("src",src);
-        modal.querySelector(".productData").innerHTML= await getProductDataForTheModal(page,currentIndex); //display the product data in the modal
+        modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); //display the product data in the modal
     });
 
     //left button
@@ -250,7 +267,7 @@ const getProductDataForTheModal = async(page,currentIndex) => {
         const src=images[currentIndex].src;
         modal.querySelector("img").setAttribute("src",src);
         //display the product data in the modal
-        modal.querySelector(".productData").innerHTML= await getProductDataForTheModal(page,currentIndex); 
+        modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); 
 
     });
 
@@ -264,7 +281,7 @@ const getProductDataForTheModal = async(page,currentIndex) => {
             src= images[currentIndex].src;
             
             modal.querySelector("img").setAttribute("src",src);
-            modal.querySelector(".productData").innerHTML= await getProductDataForTheModal(page,currentIndex); //display the product data in the modal
+            modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); //display the product data in the modal
 
         }else if (e.code=='ArrowLeft'){
             currentIndex--;
@@ -274,7 +291,7 @@ const getProductDataForTheModal = async(page,currentIndex) => {
             src=images[currentIndex].src;
             
             modal.querySelector("img").setAttribute("src",src);
-            modal.querySelector(".productData").innerHTML= await getProductDataForTheModal(page,currentIndex); //display the product data in the modal
+            modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); //display the product data in the modal
 
         }else if(e.code=='Escape'){
             modal.classList.add('display-none-modal');
