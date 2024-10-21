@@ -60,3 +60,7 @@ const displayProducts = async () => {   /* THIS FUNCTION DISPLAYS THE PRODUCTS O
 }
 
 displayProducts();
+
+/*..................................................... SEARCH BAR .....................................................*/
+
+

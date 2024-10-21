@@ -197,8 +197,10 @@ const getProductsPriceAndStock = async () => {
 
     for (let i = 0; i < response.data.products.length; i++) {
         productInfoArray.push({
+            "name": response.data.products[i].title,
             "price": response.data.products[i].price,
-            "stock": response.data.products[i].stock
+            "stock": response.data.products[i].stock,
+            "description": response.data.products[i].description
         });
     }
 
@@ -206,18 +208,31 @@ const getProductsPriceAndStock = async () => {
 }
 
 /*................................................ Get Product Data InnerHTML for The Modal .......................................*/
+
 const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
     const productInfoArray = await getProductsPriceAndStock(); // Await the promise
     const selectedProduct = productInfoArray[(page - 1) * 10 + currentIndex];
 
     const data = `
-            <p class="price">Price: ${selectedProduct.price}</p>
-            <p class="stock">Stock: ${selectedProduct.stock}</p>
+            <p>Price: ${selectedProduct.price}</p>
+            <p>Stock: ${selectedProduct.stock}</p>
     `;
 
     return data; // Return the HTML data to be displayed in the modal
 }
 
+/*............................................... Get product Description InnerHTML for the Modal .....................................................*/
+
+const getProductDescriptionInnerHTMLForTheModal = async (page, currentIndex) => {
+    const productInfoArray = await getProductsPriceAndStock(); // Await the promise
+    const selectedProduct = productInfoArray[(page - 1) * 10 + currentIndex];
+
+    const data = `
+            <p >${selectedProduct.description}</p>
+    `;
+
+    return data; // Return the HTML data to be displayed in the modal
+}
 
 /*..................................................... MODAL .....................................................*/
 
@@ -240,8 +255,8 @@ const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
 
             modal.querySelector("img").setAttribute("src",e.target.src);
             //display the product data in the modal
-            modal.querySelector(".productData").innerHTML=await getProductDataInnerHTMLForTheModal(page,currentIndex); 
-
+            modal.querySelector(".productData").innerHTML=await getProductDataInnerHTMLForTheModal(page,currentIndex);         
+            modal.querySelector(".img .desc").innerHTML=await getProductDescriptionInnerHTMLForTheModal(page,currentIndex); 
         });
     });
 
@@ -254,7 +269,9 @@ const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
 
         const src=images[currentIndex].src; //get the next image src
         modal.querySelector("img").setAttribute("src",src);
+        
         modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); //display the product data in the modal
+        modal.querySelector(".img .desc").innerHTML=await getProductDescriptionInnerHTMLForTheModal(page,currentIndex); 
     });
 
     //left button
@@ -268,7 +285,7 @@ const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
         modal.querySelector("img").setAttribute("src",src);
         //display the product data in the modal
         modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); 
-
+        modal.querySelector(".img .desc").innerHTML=await getProductDescriptionInnerHTMLForTheModal(page,currentIndex); 
     });
 
     //right button, left button, close button WITH KEYBOARD
@@ -282,7 +299,7 @@ const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
             
             modal.querySelector("img").setAttribute("src",src);
             modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); //display the product data in the modal
-
+            modal.querySelector(".img .desc").innerHTML=await getProductDescriptionInnerHTMLForTheModal(page,currentIndex); 
         }else if (e.code=='ArrowLeft'){
             currentIndex--;
             if(currentIndex<0){
@@ -292,7 +309,7 @@ const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
             
             modal.querySelector("img").setAttribute("src",src);
             modal.querySelector(".productData").innerHTML= await getProductDataInnerHTMLForTheModal(page,currentIndex); //display the product data in the modal
-
+            modal.querySelector(".img .desc").innerHTML=await getProductDescriptionInnerHTMLForTheModal(page,currentIndex); 
         }else if(e.code=='Escape'){
             modal.classList.add('display-none-modal');
         }
@@ -306,4 +323,3 @@ const getProductDataInnerHTMLForTheModal = async (page, currentIndex) => {
     });
 
 }
-
