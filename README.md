@@ -3,8 +3,7 @@
 A responsive and accessible single-page web application built with **HTML**, **CSS**, and **JavaScript**. This project showcases interactive UI features such as light/dark mode switching, paginated content, and modals for dynamic detail views.
 
 ## Live Demo
-
-[View Live Demo](https://raheeqmousa.github.io/Products-according-to-the-chosen-category/)
+[View Live Demo] (https://raheeqmousa.github.io/Products-according-to-the-chosen-category/)
 
 ## Features
 
