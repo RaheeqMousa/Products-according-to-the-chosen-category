@@ -15,8 +15,8 @@ A responsive and accessible single-page web application built with **HTML**, **C
 - **Modal Popups** to view detailed product information
 - **Responsive Design** — works well on all screen sizes
 - **fully documented**
-
-## Tech Stack
+ 
+## Technologies Used
 
 - **HTML**
 - **CSS** — custom styling with responsive layout (Flexbox)
